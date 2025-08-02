@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <title>解锁码生成器</title>
+  <style>
+    body{font-family:sans-serif;padding:2em;max-width:600px;margin:auto}
+    input,button{padding:0.6em;width:100%;margin-top:1em;font-size:1em;text-transform:uppercase}
+    #output{margin-top:1.5em;font-weight:bold;font-size:1.2em;color:green}
+  </style>
+</head>
+<body>
+  <h2>🔓解锁码生成器</h2>
+  <label>MAC 地址：</label>
+  <input id="mac" placeholder="04:24:C3:30:DD:74">
+  <label>SN 序列号：</label>
+  <input id="sn" placeholder="55452/35005635">
+  <button onclick="_()">生成解锁码</button>
+  <div id="output"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-sha256/build/sha256.min.js"></script>
+  <script>
+    function _(){let e=document.getElementById("mac"),t=document.getElementById("sn"),n=(e.value.trim()||e.placeholder).replace(/:/g,"").toUpperCase(),o=(t.value.trim()||t.placeholder).toUpperCase(),a=n+o+"XIAOMI",r=sha256.array(a),c="";for(let i=0;i<10;i++)c+=(r[i]%10).toString();document.getElementById("output").innerText="解锁码："+c}
+  </script>
+</body></html>
